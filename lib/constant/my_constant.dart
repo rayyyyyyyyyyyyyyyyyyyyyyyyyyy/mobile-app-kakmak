@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 Color primaryColor = Colors.black;
 Color secondaryColor = Colors.white;
 Color thirdColor = Color(0xFF717182);
-Color verifiedColor = Color(0x016630);
+Color verifiedColor = Color.fromARGB(0, 5, 5, 5);
 
 Color lightBackgroundColor = Colors.white;
 Color darkBackgroundColor = Colors.black;
