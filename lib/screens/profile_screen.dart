@@ -22,16 +22,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       backgroundColor: lightBackgroundColor,
       appBar: AppBar(
-        leading: Icon(Icons.menu_rounded, color: primaryColor, size: 24.0),
+        leading: Icon(Icons.arrow_back_ios, color: primaryColor, size: iconSizeLarge),
         actions: [
-          Icon(Icons.search, color: primaryColor, size: 24.0),
+          Icon(Icons.search, color: primaryColor, size: iconSizeLarge),
           const SizedBox(width: 16.0),
-          Icon(Icons.notifications, color: primaryColor, size: 24.0),
+          Icon(Icons.notifications, color: primaryColor, size: iconSizeLarge),
           const SizedBox(width: 16.0),
         ],
         backgroundColor: lightBackgroundColor,
         shape: Border(bottom: BorderSide(color: thirdColor, width: 0.3)),
       ),
+
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -45,12 +46,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   children: [
                     Text(
                       "Profile",
-                      style: headingTextStyle.copyWith(fontSize: 18.0),
+                      style: headingTextStyle.copyWith(fontSize: 20.0)
                     ),
                     Text(
                       "Manage your account and preferences",
                       style: bodyTextStyle.copyWith(
-                        fontSize: 16.0,
                         color: thirdColor,
                       ),
                     ),
@@ -90,18 +90,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: Column(
                         crossAxisAlignment:
                             CrossAxisAlignment.start, // จัดชิดซ้าย
-                        mainAxisAlignment: MainAxisAlignment
-                            .center, // จัดให้อยู่กลางแนวตั้งของพื้นที่ตัวเอง
+                        mainAxisAlignment: MainAxisAlignment.center, // จัดให้อยู่กลางแนวตั้งของพื้นที่ตัวเอง
                         children: [
                           Text(
                             'Onuma Dokpikul',
-                            style: headingTextStyle.copyWith(fontSize: 18.0),
+                            style: bodyTextStyle.copyWith(
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                           Text(
                             "bp.onuma@gmail.com",
-                            style: headingTextStyle.copyWith(
-                              fontSize: 14.0,
-                              fontWeight: FontWeight.w400,
+                            style: bodyTextStyle.copyWith(
                               color: thirdColor,
                             ),
                           ),
@@ -118,8 +117,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               borderRadius: BorderRadius.circular(16.0),
                             ),
                             child: Row(
-                              mainAxisSize: MainAxisSize
-                                  .min, // ให้ Row มีขนาดพอดีกับเนื้อหา
+                              mainAxisSize: MainAxisSize.min, // ให้ Row มีขนาดพอดีกับเนื้อหา
                               children: [
                                 Icon(
                                   Icons.check_circle_outline,
@@ -129,7 +127,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 const SizedBox(width: 4.0),
                                 Text(
                                   "Verified",
-                                  style: TextStyle(
+                                  style: bodyTextStyle.copyWith(
                                     color: verifiedColor,
                                     fontSize: 12.0,
                                   ),
@@ -156,7 +154,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: Text(
                         "Edit",
                         style: bodyTextStyle.copyWith(
-                          fontSize: 14.0,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -190,12 +187,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Icon(
                             Icons.shield_outlined,
                             color: primaryColor,
-                            size: 24.0,
+                            size: iconSizeMedium,
                           ),
                           const SizedBox(width: 12.0),
                           Text(
                             "Security",
-                            style: headingTextStyle.copyWith(fontSize: 18.0),
+                            style: headingTextStyle,
                           ),
                         ],
                       ),
@@ -206,7 +203,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       children: [
                         _buildSecurityMenu(
                           title: "Two-factor authentication",
-                          subtitle: "Add an extra layer...",
+                          subtitle: "Add an extra layer of security",
                         ),
                         _buildSecurityMenu(
                           title: "Trusted devices",
@@ -223,7 +220,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
 
-            // const SizedBox(height: 0.0),
             Padding(
               padding: const EdgeInsets.only(left: 16.0, right: 16.0),
               child: Container(
@@ -246,12 +242,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Icon(
                             Icons.notifications_none_rounded,
                             color: primaryColor,
-                            size: 24.0,
+                            size: iconSizeMedium,
                           ),
                           const SizedBox(width: 12.0),
                           Text(
                             "Notifications",
-                            style: headingTextStyle.copyWith(fontSize: 16.0),
+                            style: headingTextStyle,
                           ),
                         ],
                       ),
@@ -306,12 +302,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Icon(
                             Icons.settings_outlined, // ใช้ไอคอนรูปตัวปรับแต่ง
                             color: primaryColor,
-                            size: 24.0,
+                            size: iconSizeMedium,
                           ),
                           const SizedBox(width: 12.0),
                           Text(
                             "Preferences",
-                            style: headingTextStyle.copyWith(fontSize: 18.0),
+                            style: headingTextStyle,
                           ),
                         ],
                       ),
@@ -332,13 +328,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       subtitle: Text(
                         "English", // แสดงภาษาปัจจุบัน
                         style: bodyTextStyle.copyWith(
-                          fontSize: 14.0,
                           color: thirdColor,
                         ),
                       ),
                       trailing: Icon(
                         Icons.arrow_forward_ios,
-                        size: 16.0,
+                        size: iconSizeSmall,
                         color: thirdColor,
                       ),
                       onTap: () {
@@ -358,7 +353,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       subtitle: Text(
                         "Use dark theme",
                         style: bodyTextStyle.copyWith(
-                          fontSize: 14.0,
                           color: thirdColor,
                         ),
                       ),
@@ -409,12 +403,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Icon(
                             Icons.help_outline_rounded, // ไอคอนเครื่องหมายคำถาม
                             color: primaryColor,
-                            size: 24.0,
+                            size: iconSizeMedium,
                           ),
                           const SizedBox(width: 12.0),
                           Text(
                             "Help & Legal",
-                            style: headingTextStyle.copyWith(fontSize: 18.0),
+                            style: headingTextStyle,
                           ),
                         ],
                       ),
@@ -435,13 +429,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       subtitle: Text(
                         "Get assistance and contact us",
                         style: bodyTextStyle.copyWith(
-                          fontSize: 14.0,
                           color: thirdColor,
                         ),
                       ),
                       trailing: Icon(
                         Icons.arrow_forward_ios,
-                        size: 16.0,
+                        size: iconSizeSmall,
                         color: thirdColor,
                       ),
                       onTap: () {
@@ -461,13 +454,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       subtitle: Text(
                         "Read our terms of service",
                         style: bodyTextStyle.copyWith(
-                          fontSize: 14.0,
                           color: thirdColor,
                         ),
                       ),
                       trailing: Icon(
                         Icons.arrow_forward_ios,
-                        size: 16.0,
+                        size: iconSizeSmall,
                         color: thirdColor,
                       ),
                       onTap: () {
@@ -499,21 +491,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       width: 0.3,
                     ), // เส้นขอบ (ย้ายมาจาก Container)
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(
-                        16.0,
-                      ), // ความโค้ง (ย้ายมาจาก Container)
+                      borderRadius: BorderRadius.circular(16.0,), // ความโค้ง (ย้ายมาจาก Container)
                     ),
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.logout, color: logoutColor, size: 20.0),
+                      Icon(Icons.logout, color: logoutColor, size: iconSizeMedium),
                       const SizedBox(width: 8.0),
                       Text(
                         "Sign Out",
                         style: bodyTextStyle.copyWith(
                           color: logoutColor,
-                          fontSize: 14.0,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -534,11 +523,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
         selectedItemColor: primaryColor,
         unselectedItemColor: thirdColor,
         backgroundColor: lightBackgroundColor,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.explore), label: 'Explore'),
-          BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'Chat'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+        items: [
+          BottomNavigationBarItem(
+              icon: Icon(_selectedIndex == 0 ? Icons.home_rounded : Icons.home_outlined),
+              label: 'Home'
+            ),
+          BottomNavigationBarItem(
+            icon: Icon(_selectedIndex == 1 ? Icons.explore_rounded :  Icons.explore_outlined), 
+            label: 'Explore'
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(_selectedIndex == 2 ? Icons.chat_bubble_rounded : Icons.chat_bubble_outline_rounded), 
+            label: 'Chat'
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(_selectedIndex == 3 ? Icons.person_rounded : Icons.person_outline_rounded), 
+            label: 'Profile'
+          ),
         ],
       ),
     );
@@ -558,9 +559,9 @@ Widget _buildSecurityMenu({
     ),
     subtitle: Text(
       subtitle,
-      style: bodyTextStyle.copyWith(fontSize: 14.0, color: thirdColor),
+      style: bodyTextStyle.copyWith(color: thirdColor),
     ),
-    trailing: Icon(Icons.arrow_forward_ios, size: 16.0, color: thirdColor),
+    trailing: Icon(Icons.arrow_forward_ios, color: thirdColor, size: iconSizeSmall,),
     onTap: onTap,
   );
 }
@@ -580,7 +581,7 @@ Widget _buildNotificationItem({
     ),
     subtitle: Text(
       subtitle,
-      style: bodyTextStyle.copyWith(fontSize: 14.0, color: thirdColor),
+      style: bodyTextStyle.copyWith(color: thirdColor),
     ),
     // ใช้ Switch สำหรับเปิด-ปิด
     trailing: Transform.scale(
