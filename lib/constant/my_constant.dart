@@ -14,6 +14,7 @@ Color verifiedBackgroundColor = Color(0xFFDCFCE7);
 double iconSizeLarge = 24.0; //Appbar icon size
 double iconSizeMedium = 20.0; //Menu icon size
 double iconSizeSmall = 16.0; //Arrow icon size
+double iconSizeSwitch = 32.0; //Switch icon size
 
 TextStyle headingTextStyle = TextStyle(
   fontFamily: GoogleFonts.poppins().fontFamily,

@@ -10,6 +10,9 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   int _selectedIndex = 3;
+  bool _isAppNotiEnabled = true;
+  bool _isEmailNotiEnabled = false;
+  bool _isDarkMode = false;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -149,7 +152,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         side: BorderSide(color: thirdColor, width: 0.5),
-                        backgroundColor: secondaryColor,
                       ),
                       child: Text(
                         "Edit",
@@ -259,18 +261,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     _buildNotificationItem(
                       title: "App Notification",
                       subtitle: "Play sound on receive",
-                      value: true, // สมมติค่าว่าเป็น true
+                      value: _isAppNotiEnabled,
                       onChanged: (val) {
-                        // ใส่โค้ดอัปเดตค่าตรงนี้ (setState)
+                        setState(() {
+                          _isAppNotiEnabled = val;
+                        });
                       },
                     ),
 
                     _buildNotificationItem(
                       title: "Email Notifications",
                       subtitle: "Receive email updates",
-                      value: false, // สมมติค่าว่าเป็น false
+                      value: _isEmailNotiEnabled,
                       onChanged: (val) {
-                        // ใส่โค้ดอัปเดตค่าตรงนี้
+                        setState(() {
+                          _isEmailNotiEnabled = val;
+                        });
                       },
                     ),
                   ],
@@ -356,21 +362,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           color: thirdColor,
                         ),
                       ),
-                      trailing: Transform.scale(
-                        scale: 0.6, // ย่อขนาดสวิตช์ให้เท่ากับส่วน Notification
-                        child: Switch(
-                          value: false, // สมมติว่าปิดอยู่
-                          onChanged: (val) {
-                            // ใส่คำสั่งเปลี่ยนธีม
-                          },
-                          activeColor: secondaryColor, // หัวปุ่มเมื่อเปิด
-                          activeTrackColor: primaryColor, // รางปุ่ม
+                      trailing: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            _isDarkMode = !_isDarkMode; // สลับสถานะโหมดมืด
+                          });
+                        },
 
-                          inactiveThumbColor: secondaryColor, // หัวปุ่มเมื่อปิด
-                          inactiveTrackColor: thirdColor.withOpacity(0.4),
-                          trackOutlineColor: MaterialStateProperty.all(
-                            Colors.transparent,
-                          ),
+                        icon: Icon(
+                          _isDarkMode
+                              ? Icons.toggle_on_rounded
+                              : Icons.toggle_off_rounded,
+                          color: _isDarkMode ? primaryColor : thirdColor,
+                          size: iconSizeSwitch,
                         ),
                       ),
                     ),
@@ -584,17 +588,17 @@ Widget _buildNotificationItem({
       style: bodyTextStyle.copyWith(color: thirdColor),
     ),
     // ใช้ Switch สำหรับเปิด-ปิด
-    trailing: Transform.scale(
-      scale: 0.6, // ปรับขนาด Switch ให้เล็กลง
-      child: Switch(
-        value: value,
-        onChanged: onChanged,
-        activeColor: secondaryColor, // หัวปุ่มเมื่อเปิด
-        activeTrackColor: primaryColor, // รางปุ่ม
+    trailing: IconButton(
+      onPressed: () {
+        onChanged(!value);
+      },
 
-        inactiveThumbColor: secondaryColor, // หัวปุ่มเมื่อปิด
-        inactiveTrackColor: thirdColor.withOpacity(0.4),
-        trackOutlineColor: MaterialStateProperty.all(Colors.transparent),
+      icon: Icon(
+        value
+            ? Icons.toggle_on_rounded
+            : Icons.toggle_off_rounded,
+        color: value ? primaryColor : thirdColor,
+        size: iconSizeSwitch,
       ),
     ),
   );
